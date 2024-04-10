@@ -1,6 +1,7 @@
 from flask import Flask,request,g
 from flask_babel import Babel
 from config import Config #导入项目根目录的config
+from accept_language import parse_accept_language
 
 app = Flask(__name__) #在__init__中指定的直接在目录中访问对象
 app.config.from_object(Config) #使用配置文件
