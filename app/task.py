@@ -1,10 +1,10 @@
 #huey是个单独的模块，并需要运行一个消费者程序，消费者程序运行时指向本文件的huey实列
 #在其他文件中调用任务时，导入本文件的huey实列即可
 
-from huey import crontab,PriorityRedisHuey #导入定时任务
+from huey import crontab,SqliteHuey #导入定时任务
 # # 创建一个SqliteHuey实例
-# huey = SqliteHuey(filename='task.db')
-huey = PriorityRedisHuey('huey') #创建一个RedisHuey实例
+huey = SqliteHuey(filename='task.db')
+# huey = PriorityRedisHuey('huey') #创建一个RedisHuey实例
 
 #导入时间模块
 import time

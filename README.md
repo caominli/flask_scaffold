@@ -1,16 +1,26 @@
 # flask手脚架说明
 
-
+```
+项目目录
+ ┣ app                  #应用目录
+ ┃ ┣ templates          #模板文件
+ ┃ ┃ ┣ base.html        #基础模板  
+ ┃ ┃ ┗ index.html       #首页模板
+ ┃ ┣ static             #静态文件
+ ┃ ┣ common             #封装组件
+ ┃ ┃ ┣ __init__.py      #(空)
+ ┃ ┃ ┣ sendemail.py     #发送电子邮件
+ ┃ ┣ __init__.py        #初始化app实列
+ ┃ ┣ models.py          #peewee模型
+ ┃ ┣ views.py           #视图路由
+ ┃ ┣ api.py             #api路由
+ ┃ ┗ task.py            #任务列队[可选调用]
+ ┣ run.py               #调试运行文件
+ ┣ config.py            #配置文件
+ ┣ requirements.txt     #依赖文件
+ ┗ README.md
+```
 
 ### task任务列队启动消费者
-在项目目录下，启动2个消费者线程
-`huey_consumer.py app.task.huey -w 2`
-`python venv\Scripts\huey_consumer.py app.task.huey -w 2`
-如果需要使用redis，pip install redis
-
-### 如果不需要huey任务列队模块
-- 删除requirements.txt中的huey
-- 删除app/__init__.py中的huey代码
-- 删除app/tesk.py
 
 
