@@ -1,1 +1,0 @@
-from app.blueprints.lang.views import lang #导出蓝图，这样的作用是可以直接在其他模块中使用app.blueprints.lang 导入lang,而不用再进入routes

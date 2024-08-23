@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}标题{% endblock %}</title>
+  </head>
+  <body>
+    <div id="content">
+		{% block content %}
+		内容
+		{% endblock %}
+	  </div>
+    <div id="footer">
+      {% block footer %}
+				页尾
+      {% endblock %}
+    </div>
+  </body>
+</html>

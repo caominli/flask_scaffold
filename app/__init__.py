@@ -1,20 +1,21 @@
-from flask import Flask,request,g
-from flask_babel import Babel
-from config import Config #导入项目根目录的config
-from accept_language import parse_accept_language
+#这里是初始化设置，包括创建app实例，注册蓝图，配置app，配置peewee
+from flask import Flask
+from config import Config
+from .views import view
+from .api import api
+from .models import peeweeDB, DB, User
 
-app = Flask(__name__) #在__init__中指定的直接在目录中访问对象
-app.config.from_object(Config) #使用配置文件
+# 创建app实例
+app = Flask(__name__)
+app.config.from_object(Config) #配置app
+app.register_blueprint(view) #注册视图蓝图
+app.register_blueprint(api) #注册api蓝图
 
-from app.blueprints.lang import lang #导入一个蓝图组件
-app.register_blueprint(lang) #注册蓝图
+# 将peewee集成到flask中
+peeweeDB.init_app(app)
 
-#定义一个语言选择函数
-def get_locale():
-    if not g.get('lang_code', None):
-        g.lang_code = request.accept_languages.best_match(app.config['LANGUAGES'])
-    return g.lang_code
 
-babel = Babel(app,locale_selector=get_locale)
-
+# 创建表
+with app.app_context():
+    DB.create_tables([User])
 
